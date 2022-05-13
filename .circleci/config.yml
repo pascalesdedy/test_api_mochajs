@@ -1,0 +1,19 @@
+version: 2.1
+jobs:
+  Build-and-Test:
+    docker:
+      - image: node:latest
+    steps:
+      - checkout
+      - run: mkdir reports
+      - run:
+          name: "Install Dependencies"
+          command: "npm install"
+      - run:
+          name: "Run Tests"
+          command: "npm run test"
+
+workflows:
+  API-Testing-Workflow:
+    jobs:
+      - Build-and-Test
