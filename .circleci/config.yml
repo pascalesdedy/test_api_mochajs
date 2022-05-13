@@ -12,6 +12,11 @@ jobs:
       - run:
           name: "Run Tests"
           command: "npm run test"
+      - run:
+          name: "Compress reports"
+          command: "tar -cvf artifact.tar reports/"
+      - store_artifacts:
+          path: artifact.tar
 
 workflows:
   API-Testing-Workflow:
